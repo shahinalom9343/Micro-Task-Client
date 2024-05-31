@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import websiteImg from "../../public/logo.png";
 
 const Navbar = () => {
   const navItems = (
@@ -16,7 +17,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar z-10 max-w-6xl fixed bg-blue-900 bg-opacity-80 shadow-xl text-white">
+      <div className="navbar bg-gradient-to-r from-violet-700 to-fuchsia-700 font-bold z-10 max-w-6xl fixed bg-opacity-40 shadow-xl text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,16 +43,21 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">PicoTask Rush</a>
+          <div className="flex">
+            <img src={websiteImg} className="h-10 w-10 -mr-3" alt="" />
+            <Link to="/" className="btn btn-ghost text-3xl">
+              PicoTask Rush
+            </Link>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
-        <div className="navbar-end">
-          <Link to="/login" className="btn">
+        <div className="navbar-end flex gap-1">
+          <Link to="/login" className="btn btn-success text-white">
             Login
           </Link>
-          <Link to="/register" className="btn btn-ghost">
+          <Link to="/register" className="btn btn-info text-white">
             Register
           </Link>
         </div>
