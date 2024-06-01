@@ -4,15 +4,16 @@ const Register = () => {
   return (
     <div className="border-2 mx-auto border-red-300  w-full max-w-md mb-4 p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800">
       <h1 className="text-2xl font-bold text-center">Register</h1>
-      <form noValidate="" action="" className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="space-y-1 text-sm">
           <label htmlFor="username" className="block dark:text-gray-600">
             Username
           </label>
           <input
             type="text"
-            name="username"
-            id="username"
+            {...register("name", { required: true })}
+            name="name"
+            id="name"
             placeholder="Username"
             className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
           />

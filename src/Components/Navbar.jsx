@@ -1,7 +1,19 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import websiteImg from "../../public/logo.png";
+import useAuth from "../Hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { user, logOut } = useAuth();
+  const signOut = () => {
+    logOut().then((result) => {
+      console.log(result);
+      toast("Logout Successfully!!!");
+      navigate("/dashboard");
+    });
+  };
   const navItems = (
     <>
       <li>
@@ -54,14 +66,31 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end flex gap-1">
-          <Link to="/login" className="btn btn-success text-white">
-            Login
-          </Link>
-          <Link to="/register" className="btn btn-info text-white">
-            Register
-          </Link>
+          {user ? (
+            <div className="flex gap-1 justify-center items-center">
+              <div className="w-10 rounded-full">
+                <img className="rounded-full" src={user?.photoURL} />
+              </div>
+              <Link to="/dashboard" className="btn btn-outline text-white">
+                DashBoard
+              </Link>
+              <button onClick={signOut} className="btn btn-success text-white">
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-1">
+              <Link to="/login" className="btn btn-success text-white">
+                Login
+              </Link>
+              <Link to="/register" className="btn btn-info text-white">
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
