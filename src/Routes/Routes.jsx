@@ -6,10 +6,11 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
-import Dashboard from "../Dashboard/Dashboard";
 import PrivateRoutes from "./PrivateRoutes";
 import DashBoard from "../Layout/DashBoard";
-import MyList from "../Dashboard/MyList";
+import TaskLists from "../Dashboard/Workers/TaskLists";
+import MySubmission from "../Dashboard/Workers/MySubmission";
+import WorkerHome from "../Dashboard/Workers/WorkerHome";
 
 const router = createBrowserRouter([
   {
@@ -29,14 +30,7 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
-      {
-        path: "/dashboard",
-        element: (
-          <PrivateRoutes>
-            <Dashboard></Dashboard>
-          </PrivateRoutes>
-        ),
-      },
+
       {
         path: "/login",
         element: <Login></Login>,
@@ -57,8 +51,16 @@ const router = createBrowserRouter([
     children: [
       // for workers
       {
+        path: "workerHome",
+        element: <WorkerHome></WorkerHome>,
+      },
+      {
         path: "taskLists",
-        element: <MyList></MyList>,
+        element: <TaskLists></TaskLists>,
+      },
+      {
+        path: "mySubmisssion",
+        element: <MySubmission></MySubmission>,
       },
       // for admin
     ],

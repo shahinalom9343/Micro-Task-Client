@@ -59,7 +59,7 @@ const DashBoard = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/mySubmissions">
+              <Link to="/dashboard/mySubmisssion">
                 <FaDonate></FaDonate>
                 My Submissions
               </Link>

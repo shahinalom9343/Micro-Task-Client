@@ -6,7 +6,7 @@ const TopEarners = () => {
         <hr />
         <p className="text-base">Here are Featured freelancers of the week</p>
       </div>
-      <div className="grid grid-cols-3 gap-6 my-4">
+      <div className="grid grid-cols-3 gap-2 my-4">
         <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
           <img
             src="https://source.unsplash.com/150x150/?portrait?3"
