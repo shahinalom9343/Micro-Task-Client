@@ -32,21 +32,25 @@ const Login = () => {
 
   // google Login
   const handleGoogleSignIn = () => {
-    googleSignIn().then((result) => {
-      const userInfo = {
-        name: result.user.displayName,
-        email: result.user.email,
-      };
-      console.log(userInfo);
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Login Successful !!!",
-        showConfirmButton: false,
-        timer: 1500,
+    googleSignIn()
+      .then((result) => {
+        const userInfo = {
+          name: result.user.displayName,
+          email: result.user.email,
+        };
+        console.log(userInfo);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Login Successful !!!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch(() => {
+        alert("Email or Password does not matched !!");
       });
-      navigate(from, { replace: true });
-    });
   };
   return (
     <div className="flex">
@@ -126,12 +130,11 @@ const Login = () => {
               />
             </div>
           </div>
-          <button
-            type="button"
+          <input
+            type="submit"
+            value="Sign in"
             className="w-full bg-cyan-700 text-gray-100 px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50"
-          >
-            Sign in
-          </button>
+          ></input>
         </form>
         <p className="text-sm text-center dark:text-gray-600 mt-4">
           Dont have account?
