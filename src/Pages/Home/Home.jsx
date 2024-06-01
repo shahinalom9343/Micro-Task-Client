@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import Banner from "../../Components/Banner";
+import Hero from "../../Components/Hero";
 
 const Home = () => {
   return (
@@ -7,7 +7,9 @@ const Home = () => {
       <Helmet>
         <title>PicoTask Rush - Home</title>
       </Helmet>
-      <Banner></Banner>
+      <div>
+        <Hero></Hero>
+      </div>
     </div>
   );
 };

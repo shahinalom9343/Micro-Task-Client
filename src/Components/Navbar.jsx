@@ -71,7 +71,10 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img className="rounded-full" src={user?.photoURL} />
               </div>
-              <Link to="/dashboard" className="btn btn-outline text-white">
+              <Link
+                to="/dashboard/taskLists"
+                className="btn btn-outline text-white"
+              >
                 DashBoard
               </Link>
               <button onClick={signOut} className="btn btn-success text-white">

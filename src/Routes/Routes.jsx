@@ -8,6 +8,8 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Dashboard from "../Dashboard/Dashboard";
 import PrivateRoutes from "./PrivateRoutes";
+import DashBoard from "../Layout/DashBoard";
+import MyList from "../Dashboard/MyList";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,22 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoutes>
+        <DashBoard></DashBoard>
+      </PrivateRoutes>
+    ),
+    children: [
+      // for workers
+      {
+        path: "taskLists",
+        element: <MyList></MyList>,
+      },
+      // for admin
     ],
   },
 ]);

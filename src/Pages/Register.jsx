@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 // import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
@@ -8,12 +8,12 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    // reset,
+    reset,
     formState: { errors },
   } = useForm();
   const { createUser } = useAuth();
   // const axiosPublic = useAxiosPublic();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
       const createuser = result.user;
@@ -25,6 +25,8 @@ const Register = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      reset();
+      navigate("/login");
       // const userInfo = {
       //   name: data.name,
       //   email: data.email,
