@@ -2,10 +2,12 @@ import { Helmet } from "react-helmet-async";
 import loginImg from "../assets/login.jpg";
 import useAuth from "../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn, googleSignIn } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -17,8 +19,13 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signIn(email, password).then((result) => {
-      const loggedinUser = result.user;
-      console.log(loggedinUser);
+      console.log(result.user);
+      const userInfo = {
+        email: result.user?.email,
+        photoURL: result.user?.photoURL,
+      };
+      console.log(userInfo);
+      axiosPublic.post("/users", userInfo);
       Swal.fire({
         position: "top-center",
         icon: "success",
@@ -35,10 +42,12 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         const userInfo = {
-          name: result.user.displayName,
-          email: result.user.email,
+          name: result.user?.displayName,
+          email: result.user?.email,
+          photoURL: result.user?.photoURL,
         };
         console.log(userInfo);
+        axiosPublic.post("/users", userInfo);
         Swal.fire({
           position: "top-center",
           icon: "success",

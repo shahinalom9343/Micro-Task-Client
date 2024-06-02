@@ -11,6 +11,9 @@ import DashBoard from "../Layout/DashBoard";
 import TaskLists from "../Dashboard/Workers/TaskLists";
 import MySubmission from "../Dashboard/Workers/MySubmission";
 import WorkerHome from "../Dashboard/Workers/WorkerHome";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import AdminHome from "../Dashboard/Admin/AdminHome";
+import ManageTasks from "../Dashboard/Admin/ManageTasks";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +66,18 @@ const router = createBrowserRouter([
         element: <MySubmission></MySubmission>,
       },
       // for admin
+      {
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "manageTask",
+        element: <ManageTasks></ManageTasks>,
+      },
     ],
   },
 ]);
