@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 const AddTasks = () => {
+  const { user } = useAuth();
   const {
     register,
     handleSubmit,
@@ -12,7 +14,7 @@ const AddTasks = () => {
   const axiosSecure = useAxiosSecure();
 
   const onSubmit = (data) => {
-    // console.log(data);
+    console.log(data);
     const taskInfo = {
       title: data.title,
       url: data.url,
@@ -21,6 +23,8 @@ const AddTasks = () => {
       date: data.date,
       details: data.details,
       info: data.info,
+      creatorName: data.creatorName,
+      email: data.email,
     };
     axiosSecure.post("/tasks", taskInfo).then((res) => {
       if (res.data.insertedId) {
@@ -44,7 +48,7 @@ const AddTasks = () => {
       >
         <fieldset className="my-3 space-y-4 rounded-md shadow-sm dark:bg-gray-50">
           <div className="space-y-2">
-            <p className="font-medium text-2xl text-center text-pink-700">
+            <p className="font-extrabold text-2xl text-center text-pink-700">
               Create A Task
             </p>
           </div>
@@ -106,15 +110,17 @@ const AddTasks = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="details" className="text-sm">
-                Task Details:
+              <label htmlFor="url" className="text-sm">
+                Task Image URL
               </label>
-              <textarea
-                {...register("details", { required: true })}
-                name="details"
-                rows={10}
-                id="details"
-              ></textarea>
+              <input
+                id="url"
+                {...register("url", { required: true })}
+                name="url"
+                type="text"
+                placeholder="URL"
+                className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+              />
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="info" className="text-sm">
@@ -129,23 +135,44 @@ const AddTasks = () => {
                 className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
             </div>
-            <div className="col-span-full sm:col-span-3">
-              <label htmlFor="url" className="text-sm">
-                Task Image URL
+            <div className="col-span-full flex flex-col">
+              <label htmlFor="details" className="text-sm">
+                Task Details:
               </label>
+              <textarea
+                {...register("details", { required: true })}
+                name="details"
+                rows={10}
+                id="details"
+              ></textarea>
+            </div>
+            <div className="col-span-full sm:col-span-3">
+              <label className="text-sm">TaskCreator Name</label>
               <input
-                id="url"
-                {...register("url", { required: true })}
-                name="url"
+                {...register("creatorName", { required: true })}
+                name="creatorName"
                 type="text"
-                placeholder="URL"
+                defaultValue={user.displayName}
                 className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
             </div>
-            <div>
+            <div className="col-span-full sm:col-span-3">
+              <label htmlFor="email" className="text-sm">
+                Creator Email
+              </label>
+              <input
+                id="email"
+                {...register("email", { required: true })}
+                name="email"
+                type="email"
+                defaultValue={user.email}
+                className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+              />
+            </div>
+            <div className="col-span-full">
               <input
                 type="submit"
-                className="btn btn-info w-full text-white col-span-full sm:col-span-3"
+                className="btn btn-primary w-full text-white col-span-full sm:col-span-3"
                 value="Add Task"
               />
             </div>
