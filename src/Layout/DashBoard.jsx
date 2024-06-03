@@ -16,7 +16,7 @@ const DashBoard = () => {
           <div className="">
             <img src={logo} className="h-16 w-16" />
           </div>
-          <div>PicoTask Rush</div>
+          <div className="font-bold">PicoTask Rush</div>
         </div>
         <div className="col-span-4  px-4 text-white">
           <div className="flex gap-2 justify-end">

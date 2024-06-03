@@ -18,6 +18,7 @@ import AdminHome from "../Dashboard/Admin/AdminHome";
 import ManageTasks from "../Dashboard/Admin/ManageTasks";
 import Common from "../Dashboard/Common";
 import WithDrawals from "../Dashboard/Workers/WithDrawals";
+import UpdateTask from "../Dashboard/TaskCreator/UpdateTask";
 
 const router = createBrowserRouter([
   {
@@ -85,7 +86,21 @@ const router = createBrowserRouter([
       },
       {
         path: "myTasks",
-        element: <MyTasks></MyTasks>,
+        element: (
+          <PrivateRoutes>
+            <MyTasks></MyTasks>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "myTasks/updateTask/:id",
+        element: (
+          <PrivateRoutes>
+            <UpdateTask></UpdateTask>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/tasks/${params.id}`),
       },
 
       // for admin
