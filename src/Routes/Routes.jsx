@@ -11,9 +11,13 @@ import DashBoard from "../Layout/DashBoard";
 import TaskLists from "../Dashboard/Workers/TaskLists";
 import MySubmission from "../Dashboard/Workers/MySubmission";
 import WorkerHome from "../Dashboard/Workers/WorkerHome";
+import AddTasks from "../Dashboard/TaskCreator/AddTasks";
+import MyTasks from "../Dashboard/TaskCreator/MyTasks";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import AdminHome from "../Dashboard/Admin/AdminHome";
 import ManageTasks from "../Dashboard/Admin/ManageTasks";
+import Common from "../Dashboard/Common";
+import WithDrawals from "../Dashboard/Workers/WithDrawals";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +58,10 @@ const router = createBrowserRouter([
     children: [
       // for workers
       {
+        index: true,
+        element: <Common></Common>,
+      },
+      {
         path: "workerHome",
         element: <WorkerHome></WorkerHome>,
       },
@@ -65,7 +73,26 @@ const router = createBrowserRouter([
         path: "mySubmisssion",
         element: <MySubmission></MySubmission>,
       },
+      {
+        path: "withdrawals",
+        element: <WithDrawals></WithDrawals>,
+      },
+
+      // for task creators
+      {
+        path: "addTasks",
+        element: <AddTasks></AddTasks>,
+      },
+      {
+        path: "myTasks",
+        element: <MyTasks></MyTasks>,
+      },
+
       // for admin
+      {
+        index: true,
+        element: <Common></Common>,
+      },
       {
         path: "adminHome",
         element: <AdminHome></AdminHome>,

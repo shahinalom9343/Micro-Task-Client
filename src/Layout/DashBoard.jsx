@@ -4,6 +4,7 @@ import logo from "../../public/logo.png";
 import useAuth from "../Hooks/useAuth";
 import { IoNotifications } from "react-icons/io5";
 import useAdmin from "../Hooks/useAdmin";
+import { PiHandWithdrawFill } from "react-icons/pi";
 
 const DashBoard = () => {
   const { user } = useAuth();
@@ -51,7 +52,7 @@ const DashBoard = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <Link to="/dashboard/workerHome">
+                  <Link to="/dashboard/adminHome">
                     <FaHome></FaHome>
                     Admin Home
                   </Link>
@@ -87,6 +88,12 @@ const DashBoard = () => {
                   <Link to="/dashboard/mySubmisssion">
                     <FaDonate></FaDonate>
                     My Submissions
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/withdrawals">
+                    <PiHandWithdrawFill />
+                    Withdrawals
                   </Link>
                 </li>
               </>
