@@ -4,9 +4,11 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const MyTasks = () => {
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const { data: tasks = [], refetch } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
@@ -55,24 +57,26 @@ const MyTasks = () => {
         </thead>
         <tbody>
           {/* row 1 */}
-          {tasks.map((task, index) => (
-            <tr key={task._id}>
-              <td>{index + 1}</td>
-              <td>{task.title}</td>
-              <td>{task.quantity}</td>
-              <td>{task.payable}</td>
-              <td>
-                <Link to={`updateTask/${task._id}`}>
-                  <FaRegEdit className="text-xl" />
-                </Link>
-              </td>
-              <td>
-                <button onClick={() => handleDelete(task)}>
-                  <MdDelete className="text-xl" />
-                </button>
-              </td>
-            </tr>
-          ))}
+          {tasks
+            .filter((singleTask) => singleTask.email === user?.email)
+            .map((task, index) => (
+              <tr key={task._id}>
+                <td>{index + 1}</td>
+                <td>{task.title}</td>
+                <td>{task.quantity}</td>
+                <td>{task.payable}</td>
+                <td>
+                  <Link to={`updateTask/${task._id}`}>
+                    <FaRegEdit className="text-xl" />
+                  </Link>
+                </td>
+                <td>
+                  <button onClick={() => handleDelete(task)}>
+                    <MdDelete className="text-xl" />
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
