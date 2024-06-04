@@ -19,6 +19,7 @@ import ManageTasks from "../Dashboard/Admin/ManageTasks";
 import Common from "../Dashboard/Common";
 import WithDrawals from "../Dashboard/Workers/WithDrawals";
 import UpdateTask from "../Dashboard/TaskCreator/UpdateTask";
+import TaskDetails from "../Dashboard/Workers/TaskDetails";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,21 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/taskLists",
+        element: <TaskLists></TaskLists>,
+      },
+      {
+        path: "/taskDetails/:id",
+        element: (
+          <PrivateRoutes>
+            {" "}
+            <TaskDetails></TaskDetails>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/tasks/${params.id}`),
       },
       {
         path: "/contact",
@@ -74,12 +90,17 @@ const router = createBrowserRouter([
         path: "mySubmisssion",
         element: <MySubmission></MySubmission>,
       },
+
       {
         path: "withdrawals",
         element: <WithDrawals></WithDrawals>,
       },
 
       // for task creators
+      {
+        index: true,
+        element: <Common></Common>,
+      },
       {
         path: "addTasks",
         element: <AddTasks></AddTasks>,

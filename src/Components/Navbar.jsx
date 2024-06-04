@@ -23,13 +23,16 @@ const Navbar = () => {
         <NavLink to="/about">About</NavLink>
       </li>
       <li>
+        <NavLink to="/taskLists">All Tasks</NavLink>
+      </li>
+      <li>
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
     </>
   );
   return (
     <div>
-      <div className="navbar bg-gradient-to-r from-violet-700 to-fuchsia-700 font-bold z-10 max-w-6xl fixed bg-opacity-40 shadow-xl text-white">
+      <div className="navbar bg-gradient-to-r from-violet-700 to-fuchsia-700 font-bold  max-w-6xl bg-opacity-40 shadow-xl text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,10 +74,7 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img className="rounded-full" src={user?.photoURL} />
               </div>
-              <Link
-                to="/dashboard/taskLists"
-                className="btn btn-outline text-white"
-              >
+              <Link to="/dashboard" className="btn btn-outline text-white">
                 DashBoard
               </Link>
               <button onClick={signOut} className="btn btn-success text-white">

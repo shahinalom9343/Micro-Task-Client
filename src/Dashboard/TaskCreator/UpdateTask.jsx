@@ -22,6 +22,7 @@ const UpdateTask = () => {
     axiosSecure.put(`/tasks/${updateTask._id}`, taskData).then((res) => {
       if (res.data.modifiedCount > 0) {
         toast("Task Updated Successfully");
+        navigate("/dashboard/myTasks");
       }
     });
   };
