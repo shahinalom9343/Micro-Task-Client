@@ -3,15 +3,47 @@ import websiteImg from "../../public/logo.png";
 import useAuth from "../Hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { useState } from "react";
+import HostModal from "./HostModal";
+import useRole from "../Hooks/useRole";
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   const { user, logOut } = useAuth();
+  const [role] = useRole();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const modalHandler = async () => {
+    console.log("I want to be a host");
+    try {
+      const currentUser = {
+        email: user?.email,
+        role: "worker",
+        status: "Requested",
+      };
+      const { data } = await axiosSecure.put(`/users`, currentUser);
+      console.log(data);
+      if (data.modifiedCount > 0) {
+        toast.success("Success! Please wait for admin confirmation");
+      } else {
+        toast.success("Please!, Wait for admin approval");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    } finally {
+      closeModal();
+    }
+  };
+  const navigate = useNavigate();
   const signOut = () => {
     logOut().then((result) => {
       console.log(result);
       toast("Logout Successfully!!!");
-      navigate("/dashboard");
+      navigate("/login");
     });
   };
   const navItems = (
@@ -71,6 +103,20 @@ const Navbar = () => {
         <div className="navbar-end flex gap-1">
           {user ? (
             <div className="flex gap-1 justify-center items-center">
+              {role === "worker" && (
+                <button
+                  disabled={!user}
+                  onClick={() => setIsModalOpen(true)}
+                  className="btn btn-outline disabled:cursor-not-allowed cursor-pointer py-3 px-4 text-sm font-semibold rounded-lg  transition"
+                >
+                  Become Creator
+                </button>
+              )}
+              <HostModal
+                isOpen={isModalOpen}
+                closeModal={closeModal}
+                modalHandler={modalHandler}
+              />
               <div className="w-10 rounded-full">
                 <img className="rounded-full" src={user?.photoURL} />
               </div>

@@ -19,12 +19,12 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signIn(email, password).then((result) => {
-      console.log(result.user);
+      // console.log(result.user);
       const userInfo = {
         email: result.user?.email,
         photoURL: result.user?.photoURL,
       };
-      console.log(userInfo);
+      // console.log(userInfo);
       axiosPublic.post("/users", userInfo);
       Swal.fire({
         position: "top-center",
@@ -33,7 +33,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate(from, { replace: true });
+      navigate("/dashboard");
     });
   };
 
@@ -66,17 +66,14 @@ const Login = () => {
       <Helmet>
         <title>PicoTask-Login</title>
       </Helmet>
-      <div>
-        <img src={loginImg} className="flex justify-center items-center" />
-      </div>
-      <div className="w-full max-w-lg bg-lime-100  mb-6 mx-auto rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
-        <h2 className="mb-3 text-3xl font-semibold text-center">LogIn</h2>
+      <div className="w-full max-w-lg my-6 bg-fuchsia-300 mx-auto rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
+        <h2 className="mb-3 text-2xl font-semibold text-center">Login</h2>
         <p>Please log in your account to access your all data.</p>
 
-        <div className="my-6 space-y-4">
+        <div className="space-y-1">
           <button
             onClick={handleGoogleSignIn}
-            className="flex items-center border-2 justify-center w-full p-4 space-x-4 border-b-pink-200 rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
+            className="flex items-center border-b-2 justify-center w-full p-4 space-x-4 border-b-sky-200 rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +84,7 @@ const Login = () => {
             </svg>
             <p>Login with Google</p>
           </button>
-          <button className="flex border-2 border-b-emerald-300 items-center justify-center w-full p-4 space-x-4 rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
+          <button className="flex border-b-2 border-b-emerald-300 items-center justify-center w-full p-4 space-x-4 rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -154,6 +151,9 @@ const Login = () => {
             Sign up here
           </Link>
         </p>
+      </div>
+      <div>
+        <img src={loginImg} className="flex justify-center items-center" />
       </div>
     </div>
   );

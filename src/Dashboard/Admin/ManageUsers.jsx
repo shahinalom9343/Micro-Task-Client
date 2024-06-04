@@ -1,12 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
+import UpdateUserModal from "../../Components/UpdateUserModal";
+import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
 
-const ManageUsers = () => {
+const ManageUsers = ({ user, refetch }) => {
   const axiosSecure = useAxiosSecure();
-  const { data: users = [], refetch } = useQuery({
+  const { user: loggedInUser } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const result = await axiosSecure.get("/users");
@@ -14,14 +19,40 @@ const ManageUsers = () => {
     },
   });
 
-  // handleMakeadmin
-  const handleChangeRole = (user) => {
-    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
-      if (res.data.modifiedCount > 0) {
-        refetch();
-        toast(`${user.name} is Admin now`);
-      }
-    });
+  const { mutateAsync } = useMutation({
+    mutationFn: async (role) => {
+      const { data } = await axiosSecure.patch(
+        `/users/update/${user?.email}`,
+        role
+      );
+      return data;
+    },
+    onSuccess: (data) => {
+      refetch();
+      console.log(data);
+      toast.success("User role updated successfully!");
+      setIsOpen(false);
+    },
+  });
+
+  //   modal handler
+  const modalHandler = async (selected) => {
+    if (loggedInUser.email === user.email) {
+      toast.error("Action Not Allowed");
+      return setIsOpen(false);
+    }
+
+    const userRole = {
+      role: selected,
+      status: "Verified",
+    };
+
+    try {
+      await mutateAsync(userRole);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
   };
 
   // handleDeleteUser
@@ -48,6 +79,7 @@ const ManageUsers = () => {
       }
     });
   };
+
   return (
     <div className="my-6">
       <h3 className="text-center font-semibold text-pink-800 text-2xl">
@@ -70,9 +102,11 @@ const ManageUsers = () => {
                 <th className="p-3">Name</th>
                 <th className="p-3">Email</th>
                 <th className="p-3">PhotoURL</th>
+                <th className="p-3">Status</th>
                 <th className="p-3">Role</th>
                 <th className="p-3">Coin</th>
                 <th className="p-3">Action</th>
+                <th className="p-3">Delete User</th>
               </tr>
             </thead>
             <tbody>
@@ -94,25 +128,30 @@ const ManageUsers = () => {
                     <img
                       className="h-14 w-14 flex justify-center items-center"
                       src={user.photoURL}
-                      alt=""
                     />
                   </td>
-                  <td className="p-3">
-                    {user.role === "admin" ? (
-                      "Admin"
-                    ) : (
-                      <button
-                        className="btn btn-ghost"
-                        onClick={() => handleChangeRole(user)}
-                      >
-                        <FaEdit className="text-green-500 text-2xl"></FaEdit>
-                      </button>
-                    )}
-                  </td>
-                  <td className="p-3 text-center">
+                  <td className="p-3">{user.status}</td>
+                  <td className="p-3">{user.role}</td>
+                  <td className="p-3 ">
                     <p>$15,792</p>
                   </td>
-                  <td className="p-1 text-center">
+                  <td>
+                    <button className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                      ></span>
+                      <span className="relative">Update Role</span>
+                    </button>
+                    {/* Update User Modal */}
+                    <UpdateUserModal
+                      isOpen={isOpen}
+                      setIsOpen={setIsOpen}
+                      modalHandler={modalHandler}
+                      user={user}
+                    />
+                  </td>
+                  <td className="p-1">
                     <span className="px-3 py-1 text-xl font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50">
                       <button
                         className="btn btn-ghost"

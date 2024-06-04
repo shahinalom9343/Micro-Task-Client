@@ -1,14 +1,27 @@
-import { FaDonate, FaHome, FaList, FaTasks, FaUsers } from "react-icons/fa";
+import {
+  FaAddressBook,
+  FaDonate,
+  FaHome,
+  FaList,
+  FaSitemap,
+  FaTasks,
+  FaUsers,
+} from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import logo from "../../public/logo.png";
 import useAuth from "../Hooks/useAuth";
 import { IoNotifications } from "react-icons/io5";
 import useAdmin from "../Hooks/useAdmin";
 import { PiHandWithdrawFill } from "react-icons/pi";
+import useRole from "../Hooks/useRole";
+import { MdOutlinePayment } from "react-icons/md";
+import { GiTwoCoins } from "react-icons/gi";
 
 const DashBoard = () => {
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
+  const [role] = useRole();
+  // console.log(role);
   return (
     <div>
       <div className="grid grid-cols-7 gap-8 bg-violet-500 py-2">
@@ -49,7 +62,7 @@ const DashBoard = () => {
       <div className="grid grid-cols-7 gap-8">
         <div className="col-span-2 bg-emerald-700  min-h-screen text-white">
           <ul className="menu p-5 font-medium text-lg">
-            {isAdmin ? (
+            {role === "admin" && (
               <>
                 <li>
                   <Link to="/dashboard/adminHome">
@@ -70,7 +83,42 @@ const DashBoard = () => {
                   </Link>
                 </li>
               </>
-            ) : (
+            )}
+            {role === "taskCreator" && (
+              <>
+                <li>
+                  <Link to="/dashboard/adminHome">
+                    <FaHome></FaHome>
+                    Admin Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/addTasks">
+                    <FaAddressBook />
+                    Add Task
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/myTasks">
+                    <FaSitemap />
+                    My Tasks
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/purchaseCoins">
+                    <GiTwoCoins />
+                    Purchase Coins
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/paymentHistory">
+                    <MdOutlinePayment />
+                    Payment History
+                  </Link>
+                </li>
+              </>
+            )}
+            {role === "worker" && (
               <>
                 <li>
                   <Link to="/dashboard/workerHome">

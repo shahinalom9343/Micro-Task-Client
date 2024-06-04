@@ -20,6 +20,8 @@ import Common from "../Dashboard/Common";
 import WithDrawals from "../Dashboard/Workers/WithDrawals";
 import UpdateTask from "../Dashboard/TaskCreator/UpdateTask";
 import TaskDetails from "../Dashboard/Workers/TaskDetails";
+import PaymentHistory from "../Dashboard/TaskCreator/PaymentHistory";
+import PurchaseCoins from "../Dashboard/TaskCreator/PurchaseCoins";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +45,6 @@ const router = createBrowserRouter([
         path: "/taskDetails/:id",
         element: (
           <PrivateRoutes>
-            
             <TaskDetails></TaskDetails>
           </PrivateRoutes>
         ),
@@ -122,6 +123,14 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/tasks/${params.id}`),
+      },
+      {
+        path: "purchaseCoins",
+        element: <PurchaseCoins></PurchaseCoins>,
+      },
+      {
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
       },
 
       // for admin

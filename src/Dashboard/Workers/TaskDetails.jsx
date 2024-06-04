@@ -29,6 +29,7 @@ const TaskDetails = () => {
       creatorName: data.creatorName,
       creatorEmail: data.creatorEmail,
       submissionDetails: data.submissionDetails,
+      status: data.status,
     };
     axiosPublic.post("/submission", submittedTask).then((res) => {
       if (res.data.insertedId) {
@@ -169,6 +170,7 @@ const TaskDetails = () => {
                   <input
                     type="text"
                     name="details"
+                    className="w-full"
                     {...register("details", { required: true })}
                     defaultValue={task.details}
                   />
@@ -178,7 +180,7 @@ const TaskDetails = () => {
                     Descriptions:
                   </label>
                   <textarea
-                    rows={10}
+                    rows={5}
                     id="submissionDetails"
                     name="submissionDetails"
                     {...register("submissionDetails", { required: true })}
@@ -189,6 +191,18 @@ const TaskDetails = () => {
                       Submission Details is Required
                     </p>
                   )}
+                </div>
+                <div className="flex items-center  text-base">
+                  <label htmlFor="status" className="font-bold">
+                    Task Status:
+                  </label>
+                  <input
+                    type="text"
+                    name="status"
+                    className="btn"
+                    {...register("status", { required: true })}
+                    defaultValue="Pending"
+                  />
                 </div>
                 <input
                   type="submit"

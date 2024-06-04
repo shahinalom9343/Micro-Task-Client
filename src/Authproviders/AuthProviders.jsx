@@ -50,16 +50,29 @@ const AuthProviders = ({ children }) => {
     return signOut(auth);
   };
 
+  // save user
+  const saveUser = async (user) => {
+    const currentUser = {
+      name: user?.displayName,
+      email: user?.email,
+      role: "worker",
+      status: "Verified",
+    };
+    const { data } = await axiosPublic.put("/users", currentUser);
+    return data;
+  };
+
   // auth state change
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
         // access token and set token
-        const userInfo = { email: currentUser.email };
+        const userInfo = { email: currentUser.email, withCredentials: true };
         axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
+            saveUser(currentUser);
           }
         });
       } else {
@@ -71,12 +84,13 @@ const AuthProviders = ({ children }) => {
     return () => {
       return unsubscribe();
     };
-  }, [axiosPublic]);
+  }, []);
 
   // authInfo
   const authInfo = {
     user,
     loading,
+    setLoading,
     createUser,
     signIn,
     googleSignIn,
