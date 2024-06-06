@@ -81,7 +81,7 @@ const CheckoutForm = () => {
       try {
         const { data } = await axiosSecure.post("/payment", paymentInfo);
         console.log(data);
-        toast.success("Coin Purchased Successfully");
+        toast("Coin Purchased Successfully");
         navigate("/dashboard/paymentHistory");
       } catch (err) {
         console.log(err);
@@ -90,83 +90,86 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form
-      className="border-2 p-2 bg-purple-400 rounded-lg mt-6"
-      onSubmit={handleSubmit}
-    >
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "#424770",
-              "::placeholder": {
-                color: "#aab7c4",
+    <>
+      <form
+        className="border-2 p-2 bg-purple-400 rounded-lg mt-6"
+        onSubmit={handleSubmit}
+      >
+        <CardElement
+          options={{
+            style: {
+              base: {
+                fontSize: "16px",
+                color: "#424770",
+                "::placeholder": {
+                  color: "#aab7c4",
+                },
+              },
+              invalid: {
+                color: "#9e2146",
               },
             },
-            invalid: {
-              color: "#9e2146",
-            },
-          },
-        }}
-      />
+          }}
+        />
 
-      <div className="flex gap-4">
-        <div className="stats bg-primary p-2 text-primary-content">
-          <div className="stat-title text-white">10 Coins 1 Dollar</div>
-          <div className="stat-value">1 Dollars</div>
-          <div className="stat-actions">
-            <button
-              type="submit"
-              disabled={!stripe || !clientSecret}
-              className="btn w-full btn-success text-white font-semibold t"
-            >
-              Pay
-            </button>
+        <div className="flex gap-4">
+          <div className="stats bg-primary p-2 text-primary-content">
+            <div className="stat-title text-white">10 Coins 1 Dollar</div>
+            <div className="stat-value">1 Dollars</div>
+            <div className="stat-actions">
+              <button
+                type="submit"
+                disabled={!stripe || !clientSecret}
+                className="btn w-full btn-success text-white font-semibold t"
+              >
+                Pay
+              </button>
+            </div>
+          </div>
+          <div className="stats bg-primary p-2 text-primary-content">
+            <div className="stat-title text-white">100 Coins 9 Dollar</div>
+            <div className="stat-value">9 Dollars</div>
+            <div className="stat-actions">
+              <button
+                type="submit"
+                disabled={!stripe}
+                className="btn w-full btn-success text-white font-semibold t"
+              >
+                Pay
+              </button>
+            </div>
+          </div>
+          <div className="stats bg-primary p-2 text-primary-content">
+            <div className="stat-title text-white">500 Coins 19 Dollars</div>
+            <div className="stat-value">19 Dollars</div>
+            <div className="stat-actions">
+              <button
+                type="submit"
+                disabled={!stripe}
+                className="btn w-full btn-success text-white font-semibold t"
+              >
+                Pay
+              </button>
+            </div>
+          </div>
+          <div className="stats bg-primary p-2 text-primary-content">
+            <div className="stat-title text-white">1000 Coins 39 Dollar</div>
+            <div className="stat-value">39 Dollars</div>
+            <div className="stat-actions">
+              <button
+                type="submit"
+                disabled={!stripe}
+                className="btn w-full btn-success text-white font-semibold t"
+              >
+                Pay
+              </button>
+            </div>
           </div>
         </div>
-        <div className="stats bg-primary p-2 text-primary-content">
-          <div className="stat-title text-white">100 Coins 9 Dollar</div>
-          <div className="stat-value">9 Dollars</div>
-          <div className="stat-actions">
-            <button
-              type="submit"
-              disabled={!stripe}
-              className="btn w-full btn-success text-white font-semibold t"
-            >
-              Pay
-            </button>
-          </div>
-        </div>
-        <div className="stats bg-primary p-2 text-primary-content">
-          <div className="stat-title text-white">500 Coins 19 Dollars</div>
-          <div className="stat-value">19 Dollars</div>
-          <div className="stat-actions">
-            <button
-              type="submit"
-              disabled={!stripe}
-              className="btn w-full btn-success text-white font-semibold t"
-            >
-              Pay
-            </button>
-          </div>
-        </div>
-        <div className="stats bg-primary p-2 text-primary-content">
-          <div className="stat-title text-white">1000 Coins 39 Dollar</div>
-          <div className="stat-value">39 Dollars</div>
-          <div className="stat-actions">
-            <button
-              type="submit"
-              disabled={!stripe}
-              className="btn w-full btn-success text-white font-semibold t"
-            >
-              Pay
-            </button>
-          </div>
-        </div>
-      </div>
-      <ToastContainer></ToastContainer>
-    </form>
+        <ToastContainer></ToastContainer>
+      </form>
+      {cardError && <p className="text-red-600">{cardError}</p>}
+    </>
   );
 };
 

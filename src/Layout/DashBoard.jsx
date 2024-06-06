@@ -34,26 +34,30 @@ const DashBoard = () => {
           <div className="font-bold">PicoTask Rush</div>
         </div>
         <div className="col-span-4  px-4 text-white">
-          <div className="flex gap-2 justify-end">
-            <button className="btn">
-              Available Coin
-              <div className="badge badge-primary">+0</div>
-            </button>
-            |
-            <img
-              src={user?.photoURL}
-              className="h-16 w-16 rounded-full"
-              alt=""
-            />
-          </div>
-          <div className="text-white flex justify-end">
-            <span>
-              UserRole:{" "}
-              <button className="badge badge-secondary badge-outline">
-                Worker
+          <div className="flex gap-4 justify-around">
+            <div>
+              <button className="btn">
+                Available Coin
+                <div className="badge badge-primary">+0</div>
               </button>
-            </span>{" "}
-            | {user.displayName}
+            </div>
+
+            <div>
+              <img
+                src={user?.photoURL}
+                className="h-16 w-16 rounded-full"
+                alt=""
+              />
+            </div>
+          </div>
+          <div className="text-white flex gap-4 justify-around">
+            <div>
+              UserRole:
+              <button className="badge badge-secondary badge-outline text-lg font-semibold">
+                {role}
+              </button>
+            </div>
+            <div>{user?.displayName}</div>
           </div>
         </div>
         <div className="col-span-1 border-l-emerald-600 text-white px-2 justify-center items-center">
