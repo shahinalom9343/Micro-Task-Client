@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const TaskLists = () => {
   const axiosPublic = useAxiosPublic();
@@ -11,8 +12,12 @@ const TaskLists = () => {
       return result.data;
     },
   });
+  // console.log(tasks);
   return (
     <div>
+      <Helmet>
+        <title>Dashboard | TaskLists</title>
+      </Helmet>
       <div>
         <h3 className="text-xl text-center my-2">All Available Tasks</h3>
       </div>

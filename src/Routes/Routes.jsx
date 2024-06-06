@@ -21,7 +21,9 @@ import WithDrawals from "../Dashboard/Workers/WithDrawals";
 import UpdateTask from "../Dashboard/TaskCreator/UpdateTask";
 import TaskDetails from "../Dashboard/Workers/TaskDetails";
 import PaymentHistory from "../Dashboard/TaskCreator/PaymentHistory";
+import TaskCreatorHome from "../Dashboard/TaskCreator/TaskCreatorHome";
 import PurchaseCoins from "../Dashboard/TaskCreator/PurchaseCoins";
+import AdminRoutes from "./AdminRoutes";
 
 const router = createBrowserRouter([
   {
@@ -43,11 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/taskDetails/:id",
-        element: (
-          <PrivateRoutes>
-            <TaskDetails></TaskDetails>
-          </PrivateRoutes>
-        ),
+        element: <TaskDetails></TaskDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/tasks/${params.id}`),
       },
@@ -103,8 +101,20 @@ const router = createBrowserRouter([
         element: <Common></Common>,
       },
       {
+        path: "taskCreatorHome",
+        element: (
+          <PrivateRoutes>
+            <TaskCreatorHome></TaskCreatorHome>
+          </PrivateRoutes>
+        ),
+      },
+      {
         path: "addTasks",
-        element: <AddTasks></AddTasks>,
+        element: (
+          <PrivateRoutes>
+            <AddTasks></AddTasks>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "myTasks",
@@ -126,11 +136,20 @@ const router = createBrowserRouter([
       },
       {
         path: "purchaseCoins",
-        element: <PurchaseCoins></PurchaseCoins>,
+        element: (
+          <PrivateRoutes>
+            <PurchaseCoins></PurchaseCoins>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "paymentHistory",
-        element: <PaymentHistory></PaymentHistory>,
+        element: (
+          <PrivateRoutes>
+            {" "}
+            <PaymentHistory></PaymentHistory>
+          </PrivateRoutes>
+        ),
       },
 
       // for admin
@@ -140,15 +159,33 @@ const router = createBrowserRouter([
       },
       {
         path: "adminHome",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <PrivateRoutes>
+            <AdminRoutes>
+              <AdminHome></AdminHome>
+            </AdminRoutes>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <PrivateRoutes>
+            <AdminRoutes>
+              <ManageUsers></ManageUsers>
+            </AdminRoutes>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "manageTask",
-        element: <ManageTasks></ManageTasks>,
+        element: (
+          <PrivateRoutes>
+            <AdminRoutes>
+              <ManageTasks></ManageTasks>
+            </AdminRoutes>
+          </PrivateRoutes>
+        ),
       },
     ],
   },

@@ -1,6 +1,7 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { ToastContainer, toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const UpdateTask = () => {
   const updateTask = useLoaderData();
@@ -28,6 +29,9 @@ const UpdateTask = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Dashboard | UpdateTasks</title>
+      </Helmet>
       <form
         onSubmit={handleUpdateTask}
         className="container flex flex-col mx-auto space-y-12"

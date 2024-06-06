@@ -10,20 +10,22 @@ import {
 import { Link, Outlet } from "react-router-dom";
 import logo from "../../public/logo.png";
 import useAuth from "../Hooks/useAuth";
-import { IoNotifications } from "react-icons/io5";
-import useAdmin from "../Hooks/useAdmin";
+import { IoMenu, IoNotifications } from "react-icons/io5";
 import { PiHandWithdrawFill } from "react-icons/pi";
 import useRole from "../Hooks/useRole";
 import { MdOutlinePayment } from "react-icons/md";
 import { GiTwoCoins } from "react-icons/gi";
+import { Helmet } from "react-helmet-async";
 
 const DashBoard = () => {
   const { user } = useAuth();
-  const [isAdmin] = useAdmin();
   const [role] = useRole();
   // console.log(role);
   return (
     <div>
+      <Helmet>
+        <title>PickTask Rush | Dashboard</title>
+      </Helmet>
       <div className="grid grid-cols-7 gap-8 bg-violet-500 py-2">
         <div className="col-span-2 text-white text-2xl font-medium flex justify-center items-center">
           <div className="">
@@ -87,9 +89,9 @@ const DashBoard = () => {
             {role === "taskCreator" && (
               <>
                 <li>
-                  <Link to="/dashboard/adminHome">
+                  <Link to="/dashboard/taskCreatorHome">
                     <FaHome></FaHome>
-                    Admin Home
+                    Home
                   </Link>
                 </li>
                 <li>
@@ -123,7 +125,7 @@ const DashBoard = () => {
                 <li>
                   <Link to="/dashboard/workerHome">
                     <FaHome></FaHome>
-                    Worker Home
+                    Home
                   </Link>
                 </li>
                 <li>
@@ -151,8 +153,8 @@ const DashBoard = () => {
           <div className="menu p-5  font-medium text-lg">
             <li>
               <Link to="/">
-                <FaHome></FaHome>
-                Home
+                <IoMenu></IoMenu>
+                Menu
               </Link>
             </li>
           </div>

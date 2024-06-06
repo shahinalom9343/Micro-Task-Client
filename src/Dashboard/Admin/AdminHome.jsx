@@ -2,6 +2,7 @@ import { FaCoins, FaUsers } from "react-icons/fa";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
@@ -14,6 +15,9 @@ const AdminHome = () => {
   });
   return (
     <div>
+      <Helmet>
+        <title>Dashboard | AdminHome</title>
+      </Helmet>
       <div>
         <h3 className="my-6 text-3xl font-bold text-center text-cyan-600">
           Admin Stats

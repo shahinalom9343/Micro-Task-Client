@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const MySubmission = () => {
   const axiosPublic = useAxiosPublic();
@@ -14,6 +15,9 @@ const MySubmission = () => {
   });
   return (
     <div className="overflow-x-auto md:mt-10 border-2">
+      <Helmet>
+        <title>Dashboard | MySubmissions</title>
+      </Helmet>
       <div>
         <h3 className="text-2xl font-semibold text-center my-5">
           My Submitted tasks

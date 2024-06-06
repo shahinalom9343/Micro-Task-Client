@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const AddTasks = () => {
   const { user } = useAuth();
@@ -42,6 +43,9 @@ const AddTasks = () => {
   };
   return (
     <section className=" dark:bg-gray-100 dark:text-gray-900">
+      <Helmet>
+        <title>Dashboard | AddTask</title>
+      </Helmet>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="container flex flex-col mx-auto space-y-12"

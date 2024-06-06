@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet-async";
+
 const About = () => {
   return (
     <section className="dark:bg-gray-100 dark:text-gray-800">
+      <Helmet>
+        <title>PickTask Rush | About</title>
+      </Helmet>
       <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
         <a
           rel="noopener noreferrer"

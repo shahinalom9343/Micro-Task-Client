@@ -3,6 +3,8 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { data } from "autoprefixer";
+import { Helmet } from "react-helmet-async";
 
 const TaskDetails = () => {
   const task = useLoaderData();
@@ -24,7 +26,6 @@ const TaskDetails = () => {
       payable: data.payable,
       date: data.date,
       details: data.details,
-      workerName: data.workerName,
       user: data.userEmail,
       creatorName: data.creatorName,
       creatorEmail: data.creatorEmail,
@@ -40,17 +41,23 @@ const TaskDetails = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        // navigate("dashboard/mySubmisssion");
+        navigate("/dashboard/mySubmisssion");
       }
     });
   };
   return (
     <section className="dark:bg-stone-300 dark:text-gray-800">
+      <Helmet>
+        <title>Dashboard | TaskDetails</title>
+      </Helmet>
       {user ? (
         <div className="container flex flex-col-reverse mx-auto lg:flex-row">
+          <div className="mt-10 w-1/3 ">
+            <img src={task.url} className="h-96" alt="" />
+          </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="container flex flex-col mx-auto space-y-3"
+            className="container flex w-2/3 flex-col mx-auto space-y-3"
           >
             <fieldset className="grid grid-cols-4 gap-6 p-6  shadow-sm dark:bg-gray-50">
               <div className="col-span-full space-y-3">
@@ -88,7 +95,7 @@ const TaskDetails = () => {
                     name="url"
                     {...register("url", { required: true })}
                     defaultValue={task.url}
-                    className=" p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                    className=" p-2 w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                   />
                 </div>
                 <div className="flex items-center text-base">
@@ -102,19 +109,6 @@ const TaskDetails = () => {
                     {...register("payable", { required: true })}
                     defaultValue={task.payable}
                     className=" p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className=" flex items-center text-base">
-                  <label htmlFor="user" className="font-bold">
-                    Worker Name:
-                  </label>
-                  <input
-                    id="workerName"
-                    type="text"
-                    name="workerName"
-                    {...register("workerName", { required: true })}
-                    defaultValue={user.displayName}
-                    className="p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                   />
                 </div>
                 <div className="flex items-center text-base">
@@ -148,7 +142,7 @@ const TaskDetails = () => {
                     name="creatorEmail"
                     {...register("creatorEmail", { required: true })}
                     defaultValue={task.email}
-                    className=" p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                    className=" p-2 w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                   />
                 </div>
                 <br />

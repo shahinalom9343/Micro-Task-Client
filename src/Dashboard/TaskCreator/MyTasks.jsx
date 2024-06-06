@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const MyTasks = () => {
   const axiosSecure = useAxiosSecure();
@@ -43,6 +44,9 @@ const MyTasks = () => {
   };
   return (
     <div className="overflow-x-auto md:mt-10 border-2">
+      <Helmet>
+        <title>Dashboard | MyTasks</title>
+      </Helmet>
       <table className="table">
         {/* head */}
         <thead>

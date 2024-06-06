@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import { FaCoins } from "react-icons/fa";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 
 const WorkerHome = () => {
   return (
     <div className="bg-slate-400 rounded-xl">
+      <Helmet>
+        <title>Dashboard | WorkerHome</title>
+      </Helmet>
       <section className="p-6 my-6 dark:bg-gray-100 dark:text-gray-800">
         <div className="container grid grid-cols-1 gap-4 mx-auto sm:grid-cols-2 xl:grid-cols-3">
           <div className="flex bg-red-200 p-10 rounded-lg  dark:bg-gray-50 dark:text-gray-800">

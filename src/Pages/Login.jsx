@@ -55,7 +55,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate(from, { replace: true });
+        navigate("/dashboard");
       })
       .catch(() => {
         alert("Email or Password does not matched !!");
@@ -67,10 +67,12 @@ const Login = () => {
         <title>PicoTask-Login</title>
       </Helmet>
       <div className="w-full max-w-lg my-6 bg-fuchsia-300 mx-auto rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
-        <h2 className="mb-3 text-2xl font-semibold text-center">Login</h2>
-        <p>Please log in your account to access your all data.</p>
+        <h2 className="mb-3 text-3xl font-bold text-center">Login</h2>
+        <p className="text-sm text-center">
+          Please log in your account to access your all data.
+        </p>
 
-        <div className="space-y-1">
+        <div className="space-y-1 flex gap-4 ">
           <button
             onClick={handleGoogleSignIn}
             className="flex items-center border-b-2 justify-center w-full p-4 space-x-4 border-b-sky-200 rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
