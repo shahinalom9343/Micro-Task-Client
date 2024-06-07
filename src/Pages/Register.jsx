@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import regImg from "../assets/register.jpg";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, updateUserProfile, setLoading } = useAuth();
@@ -28,6 +29,9 @@ const Register = () => {
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <Helmet>
+        <title>PickTask Rush | Register</title>
+      </Helmet>
       <div className="md:col-span-2 my-4 flex justify-center items-center">
         <img className="h-[400px] w-full" src={regImg} />
       </div>

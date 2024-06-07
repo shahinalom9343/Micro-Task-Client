@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import errorImage from "../assets/errorPagePhoto.jpg";
+import { Helmet } from "react-helmet-async";
 const ErrorPage = () => {
   return (
     <section className="flex items-center h-full dark:bg-gray-50 dark:text-gray-800">
+      <Helmet>
+        <title>PickTask Rush | ErrorPage</title>
+      </Helmet>
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-2">
         <div className="max-w-xl text-center">
           <img

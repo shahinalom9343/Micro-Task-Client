@@ -1,3 +1,7 @@
+import { FaFacebook, FaGithub, FaGoogle, FaYoutube } from "react-icons/fa";
+import logoImg from "../../public/logo.png";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="py-6 bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900">
@@ -9,118 +13,69 @@ const Footer = () => {
               href="#"
               className="flex justify-center space-x-3 md:justify-start"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-600">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 32 32"
-                  fill="currentColor"
-                  className="flex-shrink-0 w-5 h-5 rounded-full dark:text-gray-50"
-                >
-                  <path d="M18.266 26.068l7.839-7.854 4.469 4.479c1.859 1.859 1.859 4.875 0 6.734l-1.104 1.104c-1.859 1.865-4.875 1.865-6.734 0zM30.563 2.531l-1.109-1.104c-1.859-1.859-4.875-1.859-6.734 0l-6.719 6.734-6.734-6.734c-1.859-1.859-4.875-1.859-6.734 0l-1.104 1.104c-1.859 1.859-1.859 4.875 0 6.734l6.734 6.734-6.734 6.734c-1.859 1.859-1.859 4.875 0 6.734l1.104 1.104c1.859 1.859 4.875 1.859 6.734 0l21.307-21.307c1.859-1.859 1.859-4.875 0-6.734z"></path>
-                </svg>
+              <div>
+                <img src={logoImg} className="h-16 w-16" alt="Website Logo" />
               </div>
               <span className="self-center text-2xl font-semibold">
                 PicoTask Rush
               </span>
             </a>
           </div>
-          <div className="col-span-6 text-center md:text-left md:col-span-3">
-            <p className="pb-1 text-lg font-medium">Category</p>
-            <ul>
+          <div className="col-span-6 text-start md:text-left md:col-span-3">
+            <p className="pb-1 text-lg font-medium">Social Links</p>
+            <ul className="space-y-1">
               <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
+                <Link
+                  className="flex justify-start items-center gap-1"
+                  to="https://mail.google.com/mail/u/0/#inbox"
                 >
-                  Link
-                </a>
+                  <FaGoogle></FaGoogle>
+                  <span>Google</span>
+                </Link>
               </li>
               <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
+                <Link
+                  className="flex justify-start items-center gap-1"
+                  to="https://www.youtube.com/channel/UCqTckGD2cVm6nQfEHp4I8tQ"
                 >
-                  Link
-                </a>
+                  <FaYoutube></FaYoutube>
+                  <span>YouTube</span>
+                </Link>
               </li>
               <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
+                <Link
+                  className="flex justify-start items-center gap-1"
+                  to="https://github.com/shahinalom9343/"
                 >
-                  Link
-                </a>
+                  <FaGithub></FaGithub>
+                  <span>Github</span>
+                </Link>
               </li>
               <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
+                <Link
+                  className="flex justify-start items-center gap-1"
+                  to="https://www.facebook.com/shahinalom991610"
                 >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
-                >
-                  Link
-                </a>
+                  <FaFacebook></FaFacebook>
+                  <span> Facebook</span>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="col-span-6 text-center md:text-left md:col-span-3">
             <p className="pb-1 text-lg font-medium">Category</p>
-            <ul>
+            <ul className="space-y-1">
               <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
-                >
-                  Link
-                </a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
-                >
-                  Link
-                </a>
+                <Link to="/About">About</Link>
               </li>
               <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
-                >
-                  Link
-                </a>
+                <Link to="/contact">Contact</Link>
               </li>
               <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-600"
-                >
-                  Link
-                </a>
+                <Link to="/Dashboard">Dashboard</Link>
               </li>
             </ul>
           </div>

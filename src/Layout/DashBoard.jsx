@@ -50,7 +50,7 @@ const DashBoard = () => {
               />
             </div>
           </div>
-          <div className="text-white flex gap-4 justify-around">
+          <div className="text-white flex gap-4 justify-around items-center">
             <div>
               UserRole:
               <button className="badge badge-secondary badge-outline text-lg font-semibold">
@@ -60,7 +60,7 @@ const DashBoard = () => {
             <div>{user?.displayName}</div>
           </div>
         </div>
-        <div className="col-span-1 border-l-emerald-600 text-white px-2 justify-center items-center">
+        <div className="col-span-1 text-xl border-l-emerald-600 flex flex-col text-white px-2 justify-center items-center">
           <IoNotifications />
           Notifications
         </div>
