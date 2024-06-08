@@ -3,7 +3,6 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import { data } from "autoprefixer";
 import { Helmet } from "react-helmet-async";
 
 const TaskDetails = () => {
@@ -27,11 +26,18 @@ const TaskDetails = () => {
       date: data.date,
       details: data.details,
       user: data.userEmail,
+      userName: user?.displayName,
       creatorName: data.creatorName,
       creatorEmail: data.creatorEmail,
       submissionDetails: data.submissionDetails,
       status: data.status,
     };
+    const notificationData = {
+      email: `${data.userEmail}`,
+      status: "Unread",
+      Time: new Date(),
+    };
+    axiosPublic.post("/notification", notificationData);
     axiosPublic.post("/submission", submittedTask).then((res) => {
       if (res.data.insertedId) {
         Swal.fire({

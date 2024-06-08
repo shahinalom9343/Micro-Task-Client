@@ -10,17 +10,39 @@ import {
 import { Link, Outlet } from "react-router-dom";
 import logo from "../../public/logo.png";
 import useAuth from "../Hooks/useAuth";
-import { IoMenu, IoNotifications } from "react-icons/io5";
+import { IoMenu } from "react-icons/io5";
 import { PiHandWithdrawFill } from "react-icons/pi";
 import useRole from "../Hooks/useRole";
 import { MdOutlinePayment } from "react-icons/md";
 import { GiTwoCoins } from "react-icons/gi";
 import { Helmet } from "react-helmet-async";
+import Footer from "../Components/Footer";
+// import { useQuery } from "@tanstack/react-query";
+// import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
 
 const DashBoard = () => {
   const { user } = useAuth();
   const [role] = useRole();
-  // console.log(role);
+  const [notification, setNotification] = useState([]);
+  // const axiosSecure = useAxiosSecure();
+  // const { data: statData = {} } = useQuery({
+  //   queryKey: ["statData"],
+  //   queryFn: async () => {
+  //     const { data } = await axiosSecure.get("/creator-statistics");
+  //     return data;
+  //   },
+  // });
+  const url = `http://localhost:5000/notification?email=${user?.email}`;
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setNotification(data);
+      });
+  }, [url]);
+
   return (
     <div>
       <Helmet>
@@ -38,7 +60,7 @@ const DashBoard = () => {
             <div>
               <button className="btn">
                 Available Coin
-                <div className="badge badge-primary">+0</div>
+                <div className="badge badge-primary">1200</div>
               </button>
             </div>
 
@@ -57,13 +79,13 @@ const DashBoard = () => {
                 {role}
               </button>
             </div>
-            <div>{user?.displayName}</div>
+            <div>{user?.displayName || user?.name}</div>
           </div>
         </div>
-        <div className="col-span-1 text-xl border-l-emerald-600 flex flex-col text-white px-2 justify-center items-center">
-          <IoNotifications />
+        <button className="btn">
           Notifications
-        </div>
+          <div className="badge badge-secondary">{notification.length}</div>
+        </button>
       </div>
       <div className="grid grid-cols-7 gap-8">
         <div className="col-span-2 bg-emerald-700  min-h-screen text-white">
@@ -165,6 +187,7 @@ const DashBoard = () => {
         </div>
         <div className="col-span-5">
           <Outlet></Outlet>
+          <Footer></Footer>
         </div>
       </div>
     </div>

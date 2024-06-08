@@ -51,16 +51,16 @@ const AuthProviders = ({ children }) => {
   };
 
   // save user
-  const saveUser = async (user) => {
-    const currentUser = {
-      name: user?.displayName,
-      email: user?.email,
-      role: "worker",
-      status: "Verified",
-    };
-    const { data } = await axiosPublic.put("/users", currentUser);
-    return data;
-  };
+  // const saveUser = async (user) => {
+  //   const currentUser = {
+  //     name: user?.displayName,
+  //     email: user?.email,
+  //     role: "worker",
+  //     status: "Verified",
+  //   };
+  //   const { data } = await axiosPublic.put("/users", currentUser);
+  //   return data;
+  // };
 
   // auth state change
   useEffect(() => {
@@ -72,7 +72,7 @@ const AuthProviders = ({ children }) => {
         axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
-            saveUser(currentUser);
+            // saveUser(currentUser);
           }
         });
       } else {

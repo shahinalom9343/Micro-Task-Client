@@ -1,17 +1,14 @@
 import { Helmet } from "react-helmet-async";
 import loginImg from "../assets/login.jpg";
 import useAuth from "../Hooks/useAuth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn, googleSignIn } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const location = useLocation();
   const navigate = useNavigate();
-
-  const from = location.state?.from.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -45,9 +42,11 @@ const Login = () => {
           name: result.user?.displayName,
           email: result.user?.email,
           photoURL: result.user?.photoURL,
+          role: "worker",
+          status: "Verified",
         };
-        console.log(userInfo);
-        axiosPublic.post("/users", userInfo);
+        // console.log(userInfo);
+        axiosPublic.put("/users", userInfo);
         Swal.fire({
           position: "top-center",
           icon: "success",

@@ -50,7 +50,7 @@ const MySubmission = () => {
                   <img className="h-14 w-14" src={task.url} />
                 </td>
                 <td>{task.date}</td>
-                <td>{task.workerName}</td>
+                <td>{task.userName}</td>
                 <td>{task.creatorName}</td>
                 <td>{task.creatorEmail}</td>
               </tr>

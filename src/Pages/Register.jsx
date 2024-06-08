@@ -3,9 +3,11 @@ import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import regImg from "../assets/register.jpg";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Register = () => {
   const { createUser, updateUserProfile, setLoading } = useAuth();
+  const axioxPublic = useAxiosPublic();
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,11 +16,19 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photoURL = form.photoURL.value;
+    const userInfo = {
+      name,
+      email,
+      photoURL,
+      role: "worker",
+      status: "Verified",
+    };
     try {
       setLoading(true);
 
       //2. User Registration
       createUser(email, password);
+      axioxPublic.put("/users", userInfo);
       updateUserProfile(name, photoURL);
       navigate("/login");
       toast.success("User Created Successfully!!");
