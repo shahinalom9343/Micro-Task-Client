@@ -56,7 +56,7 @@ const DashBoard = () => {
           <div className="font-bold">PicoTask Rush</div>
         </div>
         <div className="col-span-4  px-4 text-white">
-          <div className="flex gap-4 justify-around">
+          <div className="flex justify-around">
             <div>
               <button className="btn">
                 Available Coin
@@ -72,20 +72,27 @@ const DashBoard = () => {
               />
             </div>
           </div>
-          <div className="text-white flex gap-4 justify-around items-center">
+          <div className="text-white flex justify-around items-center">
             <div>
               UserRole:
-              <button className="badge badge-secondary badge-outline text-lg font-semibold">
+              <button className="badge p-2 badge-secondary badge-outline text-lg font-semibold">
                 {role}
               </button>
             </div>
             <div>{user?.displayName || user?.name}</div>
           </div>
         </div>
-        <button className="btn">
-          Notifications
-          <div className="badge badge-secondary">{notification.length}</div>
-        </button>
+        <details className="dropdown">
+          <summary className="m-1 btn">
+            Notifications
+            <div className="badge badge-secondary">{notification.length}</div>
+          </summary>
+          {notification.map((singleNotification) => (
+            <div key={singleNotification._id} className="border border-y-2">
+              <p>{singleNotification.status}</p>
+            </div>
+          ))}
+        </details>
       </div>
       <div className="grid grid-cols-7 gap-8">
         <div className="col-span-2 bg-emerald-700  min-h-screen text-white">

@@ -3,8 +3,10 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 const AddTasks = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const {
     register,
@@ -40,6 +42,7 @@ const AddTasks = () => {
       }
     });
     reset();
+    navigate("/dashboard/myTasks");
   };
   return (
     <section className=" dark:bg-gray-100 dark:text-gray-900">

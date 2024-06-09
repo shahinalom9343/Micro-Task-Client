@@ -10,7 +10,7 @@ const AdminHome = () => {
   const { data: statData = {} } = useQuery({
     queryKey: ["statData"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("/admin-statistics");
+      const { data } = await axiosSecure.get("/admin-stat");
       return data;
     },
   });

@@ -80,7 +80,6 @@ const CheckoutForm = () => {
       };
       try {
         const { data } = await axiosSecure.post("/payment", paymentInfo);
-        console.log(data);
         toast("Coin Purchased Successfully");
         navigate("/dashboard/paymentHistory");
       } catch (err) {

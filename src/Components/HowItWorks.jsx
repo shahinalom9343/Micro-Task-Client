@@ -1,325 +1,70 @@
+import { FaRegistered, FaTasks } from "react-icons/fa";
+import { FcMoneyTransfer } from "react-icons/fc";
+
 const HowItWorks = () => {
   return (
     <div className="my-10">
       <div className="my-3">
-        <h2 className="text-3xl font-bold text-center">How We Work</h2>
+        <h2 className="text-3xl font-bold text-center">How it Works</h2>
       </div>
-      <div className="grid grid-cols-3 gap-3 border-2 bg-cyan-200">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 border-2 bg-cyan-100">
         {/* registered user */}
-        <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800">
+        <div className="flex flex-col card bg-stone-100 shadow-xl space-y-6 max-w-xl p-8 rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800">
           <div className="flex flex-col items-center w-full">
-            <h2 className="text-3xl font-semibold text-center">
-              Your opinion matters!
-            </h2>
-            <div className="flex flex-col items-center py-6 space-y-3">
-              <span className="text-center">How was your experience?</span>
-              <div className="flex space-x-3">
-                <button
-                  type="button"
-                  title="Rate 1 stars"
-                  aria-label="Rate 1 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 2 stars"
-                  aria-label="Rate 2 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 3 stars"
-                  aria-label="Rate 3 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 4 stars"
-                  aria-label="Rate 4 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 5 stars"
-                  aria-label="Rate 5 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-gray-400"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col w-full">
-              <textarea
-                rows="3"
-                placeholder="Message..."
-                className="p-4 rounded-md resize-none dark:text-gray-800 dark:bg-gray-50"
-              ></textarea>
-              <button
-                type="button"
-                className="py-4 my-8 font-semibold rounded-md dark:text-gray-50 dark:bg-violet-600"
-              >
-                Leave feedback
-              </button>
-            </div>
+            <h2 className="text-3xl font-semibold text-center">1. Register</h2>
           </div>
-          <div className="flex items-center justify-center">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="text-sm dark:text-gray-600"
-            >
-              Maybe later
-            </a>
+          <div className="flex text-5xl items-center justify-center">
+            <FaRegistered></FaRegistered>
+          </div>
+          <div className="text-base text-justify">
+            <p>
+              Start with a warm welcome to the user and express gratitude for
+              their interest in joining your website.Provide clear instructions
+              on how to register. This might include filling out a form with
+              basic information such as name, email address, and password.
+            </p>
           </div>
         </div>
 
         {/* Completed tasks */}
-        <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800">
+        <div className="flex flex-col card bg-violet-100 shadow-xl space-y-6 max-w-xl p-8 rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800">
           <div className="flex flex-col items-center w-full">
             <h2 className="text-3xl font-semibold text-center">
-              Your opinion matters!
+              2. Complete Tasks
             </h2>
-            <div className="flex flex-col items-center py-6 space-y-3">
-              <span className="text-center">How was your experience?</span>
-              <div className="flex space-x-3">
-                <button
-                  type="button"
-                  title="Rate 1 stars"
-                  aria-label="Rate 1 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 2 stars"
-                  aria-label="Rate 2 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 3 stars"
-                  aria-label="Rate 3 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 4 stars"
-                  aria-label="Rate 4 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 5 stars"
-                  aria-label="Rate 5 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-gray-400"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col w-full">
-              <textarea
-                rows="3"
-                placeholder="Message..."
-                className="p-4 rounded-md resize-none dark:text-gray-800 dark:bg-gray-50"
-              ></textarea>
-              <button
-                type="button"
-                className="py-4 my-8 font-semibold rounded-md dark:text-gray-50 dark:bg-violet-600"
-              >
-                Leave feedback
-              </button>
-            </div>
           </div>
-          <div className="flex items-center justify-center">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="text-sm dark:text-gray-600"
-            >
-              Maybe later
-            </a>
+          <div className="flex text-5xl items-center justify-center">
+            <FaTasks></FaTasks>
+          </div>
+          <div className="text-base text-justify">
+            <p>
+              Start with a warm welcome to the user and express gratitude for
+              their interest in joining your website.Provide clear instructions
+              on how to register. This might include filling out a form with
+              basic information such as name, email address, and password.
+            </p>
           </div>
         </div>
 
         {/* Earn rewards */}
-        <div className="flex flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800">
+        <div className="flex flex-col card bg-pink-100 shadow-xl space-y-6 max-w-xl p-8 rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800">
           <div className="flex flex-col items-center w-full">
             <h2 className="text-3xl font-semibold text-center">
-              Your opinion matters!
+              3. Earn Money
             </h2>
-            <div className="flex flex-col items-center py-6 space-y-3">
-              <span className="text-center">How was your experience?</span>
-              <div className="flex space-x-3">
-                <button
-                  type="button"
-                  title="Rate 1 stars"
-                  aria-label="Rate 1 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 2 stars"
-                  aria-label="Rate 2 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 3 stars"
-                  aria-label="Rate 3 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 4 stars"
-                  aria-label="Rate 4 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-yellow-700"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Rate 5 stars"
-                  aria-label="Rate 5 stars"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-10 h-10 dark:text-gray-400"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col w-full">
-              <textarea
-                rows="3"
-                placeholder="Message..."
-                className="p-4 rounded-md resize-none dark:text-gray-800 dark:bg-gray-50"
-              ></textarea>
-              <button
-                type="button"
-                className="py-4 my-8 font-semibold rounded-md dark:text-gray-50 dark:bg-violet-600"
-              >
-                Leave feedback
-              </button>
-            </div>
           </div>
-          <div className="flex items-center justify-center">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="text-sm dark:text-gray-600"
-            >
-              Maybe later
-            </a>
+          <div className="flex text-5xl items-center justify-center">
+            <FcMoneyTransfer />
+          </div>
+          <div className="text-base text-justify">
+            <p>
+              Select the tasks that interest you and match your expertise.
+              Whether you're a quick typist, a creative thinker, or a meticulous
+              researcher, there's a task waiting for you.Get rewarded for your
+              efforts! As you successfully complete tasks, you'll earn money
+              that can be deposited directly into your account. The more tasks
+              you complete, the more you can earn.
+            </p>
           </div>
         </div>
       </div>
