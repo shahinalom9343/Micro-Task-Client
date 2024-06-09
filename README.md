@@ -4,7 +4,7 @@ Admin Username: Shahin Alom
 Admin Email: cuet.shahin.eee12@gmail.com
 Password : sh@hin@lom9343
 
-Live website URL:
+Live website URL: https://picotask-rush.web.app/
 
 Main features of the PicoTask Rush website are:
 

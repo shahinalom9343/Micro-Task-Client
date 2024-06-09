@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         path: "/taskDetails/:id",
         element: <TaskDetails></TaskDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tasks/${params.id}`),
+          fetch(`https://task-rush-server.vercel.app/tasks/${params.id}`),
       },
       {
         path: "/contact",
@@ -132,7 +132,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tasks/${params.id}`),
+          fetch(`https://task-rush-server.vercel.app/tasks/${params.id}`),
       },
       {
         path: "purchaseCoins",

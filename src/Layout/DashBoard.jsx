@@ -33,7 +33,7 @@ const DashBoard = () => {
   //     return data;
   //   },
   // });
-  const url = `http://localhost:5000/notification?email=${user?.email}`;
+  const url = `https://task-rush-server.vercel.app/notification?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
