@@ -111,8 +111,8 @@ const CheckoutForm = () => {
           }}
         />
 
-        <div className="flex gap-4">
-          <div className="stats bg-primary p-2 text-primary-content">
+        <div className="grid grid-cols-1 md:grid-cols-8 gap-4">
+          <div className="stats col-span-1 md:col-span-2 bg-primary p-2 text-primary-content">
             <div className="stat-title text-white">10 Coins 1 Dollar</div>
             <div className="stat-value">1 Dollars</div>
             <div className="stat-actions">
@@ -125,7 +125,7 @@ const CheckoutForm = () => {
               </button>
             </div>
           </div>
-          <div className="stats bg-primary p-2 text-primary-content">
+          <div className="stats col-span-1 md:col-span-2 bg-primary p-2 text-primary-content">
             <div className="stat-title text-white">100 Coins 9 Dollar</div>
             <div className="stat-value">9 Dollars</div>
             <div className="stat-actions">
@@ -138,7 +138,7 @@ const CheckoutForm = () => {
               </button>
             </div>
           </div>
-          <div className="stats bg-primary p-2 text-primary-content">
+          <div className="stats col-span-1 md:col-span-2 bg-primary p-2 text-primary-content">
             <div className="stat-title text-white">500 Coins 19 Dollars</div>
             <div className="stat-value">19 Dollars</div>
             <div className="stat-actions">
@@ -151,7 +151,7 @@ const CheckoutForm = () => {
               </button>
             </div>
           </div>
-          <div className="stats bg-primary p-2 text-primary-content">
+          <div className="stats col-span-1 md:col-span-2 bg-primary p-2 text-primary-content">
             <div className="stat-title text-white">1000 Coins 39 Dollar</div>
             <div className="stat-value">39 Dollars</div>
             <div className="stat-actions">

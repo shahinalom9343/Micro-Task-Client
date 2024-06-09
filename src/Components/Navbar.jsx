@@ -91,8 +91,12 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex">
-            <img src={websiteImg} className="h-10 w-10 -mr-3" alt="" />
-            <Link to="/" className="btn btn-ghost text-3xl">
+            <img
+              src={websiteImg}
+              className="hidden md:block h-10 w-10 -mr-3"
+              alt=""
+            />
+            <Link to="/" className="btn btn-ghost text-lg md:text-3xl">
               PicoTask Rush
             </Link>
           </div>

@@ -20,7 +20,7 @@ const AdminHome = () => {
         <title>Dashboard | AdminHome</title>
       </Helmet>
       <div>
-        <h3 className="my-6 text-3xl font-bold text-center text-cyan-600">
+        <h3 className="my-1 md:my-6 text-3xl font-bold text-center text-cyan-600">
           Admin Stats
         </h3>
         <div className="bg-slate-400 rounded-xl">

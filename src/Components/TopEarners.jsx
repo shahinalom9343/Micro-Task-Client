@@ -19,7 +19,7 @@ const TopEarners = () => {
         <hr />
         <p className="text-base">Here are Featured freelancers of the week</p>
       </div>
-      <div className="grid grid-cols-3 gap-2 my-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-4">
         {users.map(
           (user) =>
             user.role === "worker" && (

@@ -48,22 +48,21 @@ const DashBoard = () => {
       <Helmet>
         <title>PickTask Rush | Dashboard</title>
       </Helmet>
-      <div className="grid grid-cols-7 gap-8 bg-violet-500 py-2">
-        <div className="col-span-2 text-white text-2xl font-medium flex justify-center items-center">
+      <div className="grid grid-cols-3 md:grid-cols-7 gap-1 md:gap-8 bg-violet-500 py-2">
+        <div className="col-span-1 md:col-span-2 text-white text-lg md:text-2xl font-medium flex justify-center items-center">
           <div className="">
-            <img src={logo} className="h-16 w-16" />
+            <img src={logo} className="hidden md:block h-16 w-16" />
           </div>
           <div className="font-bold">PicoTask Rush</div>
         </div>
-        <div className="col-span-4  px-4 text-white">
-          <div className="flex justify-around">
+        <div className="col-span-1 md:col-span-4 md:px-4 text-white">
+          <div className="flex flex-col md:flex-row gap-2 justify-around items-center">
             <div>
               <button className="btn">
                 Available Coin
                 <div className="badge badge-primary">1200</div>
               </button>
             </div>
-
             <div>
               <img
                 src={user?.photoURL}
@@ -82,7 +81,7 @@ const DashBoard = () => {
             <div>{user?.displayName || user?.name}</div>
           </div>
         </div>
-        <details className="dropdown">
+        <details className="col-span-1 w-auto dropdown">
           <summary className="m-1 btn">
             Notifications
             <div className="badge badge-secondary">{notification.length}</div>
@@ -94,8 +93,8 @@ const DashBoard = () => {
           ))}
         </details>
       </div>
-      <div className="grid grid-cols-7 gap-8">
-        <div className="col-span-2 bg-emerald-700  min-h-screen text-white">
+      <div className="grid grid-cols-1 md:grid-cols-7 gap-8">
+        <div className="col-span-1 md:col-span-2 bg-emerald-700  min-h-screen text-white">
           <ul className="menu p-5 font-medium text-lg">
             {role === "admin" && (
               <>
@@ -192,7 +191,7 @@ const DashBoard = () => {
             </li>
           </div>
         </div>
-        <div className="col-span-5">
+        <div className="col-span-1 md:col-span-5">
           <Outlet></Outlet>
           <Footer></Footer>
         </div>
